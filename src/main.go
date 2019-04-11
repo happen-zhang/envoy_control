@@ -13,7 +13,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	myals "accesslogs"
+	myals "github.com/salrashid123/envoy_control/src/accesslogs"
 
 	"github.com/envoyproxy/go-control-plane/pkg/cache"
 	xds "github.com/envoyproxy/go-control-plane/pkg/server"
@@ -37,7 +37,7 @@ var (
 	debug       bool
 	onlyLogging bool
 
-	localhost = "127.0.0.1"
+	localhost = "0.0.0.0"
 
 	port        uint
 	gatewayPort uint
@@ -191,9 +191,9 @@ func RunManagementGateway(ctx context.Context, srv xds.Server, port uint) {
 			log.Error(err)
 		}
 	}()
-	if err := server.Shutdown(ctx); err != nil {
-		log.Error(err)
-	}
+	/* if err := server.Shutdown(ctx); err != nil {*/
+	//log.Error(err)
+	/*}*/
 }
 
 func main() {
@@ -239,8 +239,8 @@ func main() {
 		nodeId := config.GetStatusKeys()[1]
 
 		var clusterName = "service_bbc"
-		var remoteHost = "www.bbc.com"
-		var sni = "www.bbc.com"
+		var remoteHost = "www.baidu.com"
+		var sni = "www.baidu.com"
 		log.Infof(">>>>>>>>>>>>>>>>>>> creating cluster " + clusterName)
 
 		//c := []cache.Resource{resource.MakeCluster(resource.Ads, clusterName)}
